@@ -20,21 +20,21 @@ const ContactState = props => {
                 name: 'Jill',
                 email: 'jill@gmail.com',
                 phone: '111-1111-1111',
-                types: 'personal'
+                type: 'personal'
             },
             {
                 id: 2,
                 name: 'Jgill',
                 email: 'jgill@gmail.com',
                 phone: '111-1111-1111',
-                types: 'personal'
+                type: 'personal'
             },
             {
                 id: 3,
                 name: 'Jpill',
                 email: 'pill@gmail.com',
                 phone: '111-1111-1111',
-                types: 'personal'
+                type: 'professional'
             }
         ]
     };
