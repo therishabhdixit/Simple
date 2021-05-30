@@ -15,6 +15,7 @@ import {
     CLEAR_FILTER,
 } from '../types';
 
+
 const ContactState = props => {
     const initialState = {
         contacts: [
@@ -27,21 +28,22 @@ const ContactState = props => {
             },
             {
                 id: 2,
-                name: 'Jgill',
-                email: 'jgill@gmail.com',
-                phone: '111-1111-1111',
+                name: 'gill',
+                email: 'gill@gmail.com',
+                phone: '222-2222-2222',
                 type: 'personal'
             },
             {
                 id: 3,
-                name: 'Jpill',
+                name: 'pill',
                 email: 'pill@gmail.com',
-                phone: '111-1111-1111',
+                phone: '333-3333-3333',
                 type: 'professional'
             }
         ],
 
-        current: null
+        current: null,
+        filtered: null
     };
 
     const [state, dispatch] = useReducer(contactReducer, initialState);
@@ -74,7 +76,20 @@ const ContactState = props => {
         dispatch({
             type: UPDATE_CONTACT, payload: contact
         });
-    }
+    };
+
+    //Filter Contacts
+
+    const filterContacts = text => {
+        dispatch({
+            type: FILTER_CONTACTS, payload: text
+        });
+    };
+
+    //clear Filter
+    const clearFilter = () => {
+        dispatch({ type: CLEAR_FILTER });
+    };
 
 
 
@@ -83,12 +98,16 @@ const ContactState = props => {
             value={{
                 contacts: state.contacts,
                 current: state.current,
+                filtered: state.filtered,
 
                 addContact,
                 deleteContact,
                 setCurrent,
                 clearCurrent,
-                updateContact
+                updateContact,
+                filterContacts,
+                clearFilter
+
             }}
         >
             {props.children}
