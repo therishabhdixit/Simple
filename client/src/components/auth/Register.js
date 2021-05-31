@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
-// import AlertContext from '../../context/alert/alertContext';
+import AlertContext from '../../context/alert/alertContext';
 // import AuthContext from '../../context/auth/authContext';
 
 const Register = props => {
-    // const alertContext = useContext(AlertContext);
+    const alertContext = useContext(AlertContext);
     // const authContext = useContext(AuthContext);
 
-    // const { setAlert } = alertContext;
+    const { setAlert } = alertContext;
     // const { register, error, clearErrors, isAuthenticated } = authContext;
 
     // useEffect(() => {
@@ -34,18 +34,19 @@ const Register = props => {
 
     const onSubmit = e => {
         e.preventDefault();
-        console.log('Register submit');
-        // if (name === '' || email === '' || password === '') {
-        //     setAlert('Please enter all fields', 'danger');
-        // } else if (password !== password2) {
-        //     setAlert('Passwords do not match', 'danger');
-        // } else {
-        //     register({
-        //         name,
-        //         email,
-        //         password
-        //     });
-        // }
+
+        if (name === '' || email === '' || password === '') {
+            setAlert('Please enter all fields', 'danger');
+        } else if (password !== password2) {
+            setAlert('Passwords do not match', 'danger');
+        } else {
+            // register({
+            //     name,
+            //     email,
+            //     password
+            // });
+            console.log('Register submit');
+        }
     };
 
     return (
@@ -62,7 +63,7 @@ const Register = props => {
                         name='name'
                         value={name}
                         onChange={onChange}
-                    // required
+                        required
                     />
                 </div>
                 <div className='form-group'>
@@ -73,7 +74,7 @@ const Register = props => {
                         name='email'
                         value={email}
                         onChange={onChange}
-                    // required
+                        required
                     />
                 </div>
                 <div className='form-group'>
@@ -84,8 +85,8 @@ const Register = props => {
                         name='password'
                         value={password}
                         onChange={onChange}
-                    // required
-                    // minLength='6'
+                        required
+                        minLength='6'
                     />
                 </div>
                 <div className='form-group'>
@@ -96,6 +97,8 @@ const Register = props => {
                         name='password2'
                         value={password2}
                         onChange={onChange}
+                        required
+                        minLength='6'
 
                     />
                 </div>
